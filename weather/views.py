@@ -12,7 +12,9 @@ def index(request):
     city_info = {
         'city': city,
         'temp': res["main"]["temp"],
-        'icon': res["weather"]["icon"]
+        'icon': res["weather"][0]["icon"]
     }
 
-    return render(request, 'weather/index.html')
+    context = {'info': city_info}
+
+    return render(request, 'weather/index.html', context)
