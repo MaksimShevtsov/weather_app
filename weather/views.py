@@ -7,7 +7,7 @@ from .models import City
 
 def index(request):
     appid = '01112e9f2a2bae82b21d8155e85ba84a'
-    url = 'https://api.openweathermap.org/data/2.5/weather?q={},&units=metric&appid=' + appid
+    url = 'https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=' + appid
     cities = City.objects.all()
 
     all_cities = []
