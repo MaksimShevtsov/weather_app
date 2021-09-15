@@ -7,49 +7,40 @@
     <title>Погодное приложение</title>
 </head>
 <body>
-    <div class="container">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-          <h5 class="my-0 mr-md-auto font-weight-normal"> Max Shevtsov </h5>
-          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <h5 class="my-0 mr-md-auto font-weight-normal"> Max Shevtsov </h5>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-          </ul>
+    </header>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6 offset-1">
+            <h1>Погода в вашем городе</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="city">Город</label>
+                {{ form.name }}
+                <input type="submit" name="send" value="Узнать" class="mt-2 btn btn-danger">
+            </form>
+        </div>
+        <div class="col-4 offset-1">
+            <h1>Информация</h1>
 
-          <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Login</button>
-            <button type="button" class="btn btn-primary">Sign-up</button>
-          </div>
-        </header>
-     </div>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-6 offset-1">
-                <h1>Погода в вашем городе</h1>
-                <form action="">
-                    <label for="city">Город</label>
-                    <input type="text" id="city" class="form-control"
-                           name="city" placeholder="Введите город">
-                    <input type="submit" name="send" value="Узнать" class="mt-2 btn btn-danger">
-                </form>
-            </div>
-            <div class="col-4 offset-1">
-                <h1>Информация</h1>
-
-                {% for info in all_info %}
+            {% for info in all_info %}
                 <div class="alert alert-info">
                     <b>Город:</b> {{ info.city }}<br>
                     <b>Температура:</b> {{ info.temp }} <sup>o</sup><br>
                     <!--<img src="http://openweathermap.org/img/w/{{ city.icon }}.png" alt="Фото погоды" class="img-thumbnail">-->
                 </div>
-                {% endfor %}
+            {% endfor %}
 
 
-            </div>
         </div>
     </div>
+</div>
 
 
 </body>
